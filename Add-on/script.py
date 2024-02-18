@@ -3,10 +3,13 @@ from hacomms import HAComms
 from dyncomms import DynComms
 from botocore.exceptions import EndpointConnectionError
 
+import os
 import json
 from time import sleep
 import queue
 from threading import Thread
+
+ha_api_endpoint = os.environ.get('HA_API_ENDPOINT')  # This will be None if not set
 
 with open("/data/options.json", "r") as json_file:
     options = json.load(json_file)
@@ -20,7 +23,7 @@ with open("/data/options.json", "r") as json_file:
 
 sqscomms= SQSComms(access_key, access_secret, region, queue_url)
 dyncomms = DynComms(access_key, access_secret, region, table)
-hacomms = HAComms(ha_token)
+hacomms = HAComms(ha_token, ha_api_endpoint)
 
 print("start", flush=True)
 dyncomms.purge()

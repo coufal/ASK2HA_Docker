@@ -11,6 +11,8 @@ For the initial part of the setup you can follow this guide https://github.com/m
 
 For the installation of the add-on follow the guide for third-party add-ons https://www.home-assistant.io/hassio/installing_third_party_addons/.
 
+In case of using Docker, you can use the environment variable `HA_API_ENDPOINT` to set the endpoint of your HA instance (e.g. `http://ha:8123/api/alexa/smart_home`).
+
 Remember to change config.py for the lambda function and the configuration of the addon inside HA after the installation.
 
 #### Details about the setup
